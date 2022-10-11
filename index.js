@@ -198,27 +198,57 @@
 // }
 
 //5
-const arr = [
-	[2, 4, 6],
-	[1, 5, 10],
-	[7, 4, 1],
-]
+// const arr = [
+// 	[2, 4, 6],
+// 	[1, 5, 10],
+// 	[7, 4, 1],
+// ]
 
-function getSumValues (arr) {
-	return arr.reduce(function(a, b) {
-		return a + b
-		}
-	);
-}
+// function getSumValues (arr) {
+// 	return arr.reduce(function(a, b) {
+// 		return a + b
+// 		}
+// 	);
+// }
 
-let maxSumOfArrayIndex = 0;
-let maxSumOfArray = getSumValues(arr[maxSumOfArrayIndex]);
+// let maxSumOfArrayIndex = 0;
+// let maxSumOfArray = getSumValues(arr[maxSumOfArrayIndex]);
 
-for (let i = 1; i < arr.length; i++) {
-	if (getSumValues(arr[i]) > maxSumOfArray) {
-		maxSumOfArrayIndex = i;
-		maxSumOfArray = getSumValues(arr[i])
-	}
-}
-console.log(maxSumOfArrayIndex);
-console.log(maxSumOfArray);
+// for (let i = 1; i < arr.length; i++) {
+// 	if (getSumValues(arr[i]) > maxSumOfArray) {
+// 		maxSumOfArrayIndex = i;
+// 		maxSumOfArray = getSumValues(arr[i])
+// 	}
+// }
+// console.log(maxSumOfArrayIndex);
+// console.log(maxSumOfArray);
+
+//ДЗ 4
+
+//1
+// let num = +prompt("Введите целое число от 0 до 999");
+// function isInteger (num) {
+// 	let obj = {};
+// 	if ((Number.isInteger(num)) === true) {
+// 		obj = num;
+// 	} else obj = `${JSON.stringify(obj)}. Ошибка. Введено некорректное значение.`;
+// 	return obj
+// }
+// function getDigitsOfNum (num) {
+// 	let digitNum = null;
+// 	if (isInteger(num) >= 0 && isInteger(num) <= 999) {
+// 		digitNum = {
+// 			firstDigit: isInteger(num) % 10 || 0,
+// 			secondDigit: Math.floor(isInteger(num) / 10) % 10 || 0, 
+// 			thirdDigit: Math.floor(isInteger(num) / 100) % 10 || 0
+// 		};
+// 	} else digitNum = isInteger();
+// 	return digitNum
+// }
+// console.log(getDigitsOfNum(num))
+
+//2
+const options = {
+	rowsCount: 15,
+	columnsCount: 15,
+};
