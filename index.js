@@ -597,7 +597,7 @@ const chess = {
 		this.figures.forEach((obj) => {
 			if (cell.getAttribute('data-pos') === obj.position) {
 				for (let key in this.figureHTML) {
-					if (key === `${obj.name}${obj.color}`) {
+					if (key === `${obj.name}` + `${obj.color}`) {
 						cell.innerHTML = this.figureHTML[key];
 					}
 				}
