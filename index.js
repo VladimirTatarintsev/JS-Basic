@@ -248,7 +248,361 @@
 // console.log(getDigitsOfNum(num))
 
 //2
-const options = {
-	rowsCount: 15,
-	columnsCount: 15,
+// const options = {
+// 	rowsCount: 10,
+// 	columnsCount: 10,
+// 	startPositionX: 2,
+// 	startPositionY: 6,
+// };
+
+// const player = {
+// 	x: null,
+// 	y: null,
+
+// 	init(startX, startY) {
+// 		this.x = startX;
+// 		this.y = startY;
+// 	},
+
+// 	move(nextPoint) {
+// 		this.x = nextPoint.x,
+// 		this.y = nextPoint.y
+// 	},
+
+// 	getNextPosition(direction) {
+// 		const nextPosition = {
+// 			x: this.x,
+// 			y: this.y,
+// 		};
+// 		switch (direction) {
+// 			case 1:
+// 				nextPosition.y++;
+// 				nextPosition.x--;
+// 				break;
+// 			case 2:
+// 				nextPosition.y++;
+// 				break;
+// 			case 3:
+// 				nextPosition.y++;
+// 				nextPosition.x++;
+// 				break;
+// 			case 4:
+// 				nextPosition.x--;
+// 				break;
+// 			case 6:
+// 				nextPosition.x++;
+// 				break;
+// 			case 7:
+// 				nextPosition.y--;
+// 				nextPosition.x--;
+// 				break;
+// 			case 8:
+// 				nextPosition.y--;
+// 				break;
+// 			case 9:
+// 				nextPosition.y--;
+// 				nextPosition.x++;
+// 				break;
+// 		}
+// 		return nextPosition;
+// 	}
+// };
+
+// const walkyQuest = {
+// 	options,
+// 	player,
+
+// 	run() {
+// 		this.player.init(this.options.startPositionX, this.options.startPositionY);
+		
+// 		while (true) {
+// 			this.render();
+
+// 			const direction = this.getDirection();
+			
+// 			if (direction === -1) {
+// 				alert('До свидания.');
+// 				return;
+// 			}
+		
+// 			const nextPoint = this.player.getNextPosition(direction);
+
+// 			if (this.canPlayerMakeStep(nextPoint)) {
+// 				this.player.move(nextPoint);
+// 			}
+// 		}
+		
+// 	},
+// 	render() {
+// 			let field = "";
+// 			for (let i = 0; i < this.options.rowsCount; i++) {
+// 				for (let j = 0; j < this.options.columnsCount; j++) {
+// 					if (this.player.x === j && this.player.y === i) {
+// 						field += "O "
+// 					} else field += "X ";
+// 				}
+// 				field += "\n";
+// 			}
+// 			console.clear();
+// 			console.log(field);
+// 	},
+
+// 	getDirection() {
+// 		const availableDirections = [-1, 1, 2, 3, 4, 6, 7, 8, 9];
+// 		while (true) {
+// 			const direction = parseInt(prompt('Введите число, куда вы хотите переместиться, для выхода введите -1'))
+// 			if (!availableDirections.includes(direction)) {
+// 				alert('Для перемещения надо ввести одно из значений: -1, 1, 2, 3, 4, 6, 7, 8, 9');
+// 				continue;
+// 			}
+// 			return direction;
+// 		}
+// 	},
+
+// 	canPlayerMakeStep(nextPoint) {
+// 		if (nextPoint.x < 0 || nextPoint.x > 9 || nextPoint.y < 0 || nextPoint.y > 9) {
+// 			return false;
+// 		} else return true;
+// 	}
+// };
+
+// walkyQuest.run();
+
+//3 
+// const questions = [
+// 	{
+// 		text: 'В каком году Ю. Гагарин совершил полет в космос?',
+// 		variants: {
+// 			a: '1961',
+// 			b: '1992',
+// 			c: '1881',
+// 			d: '1963',
+// 		},
+// 		correctAnswerKey: 'd'
+// 	},
+// 	{
+// 		text: 'Кто автор \"Сказки о попе и работнике его Балде\"?',
+// 		variants: {
+// 			a: 'Пушкин',
+// 			b: 'Лермонтов',
+// 			c: 'Крылов',
+// 			d: 'Достоевский',
+// 		},
+// 	correctAnswerKey: 'a',
+// 	},
+// 	{
+// 		text: 'Исполнитель роли Бендера в \"Золотом теленке\"?',
+// 		variants: {
+// 			a: 'Миронов',
+// 			b: 'Папанов',
+// 			c: 'Гомиашвили',
+// 			d: 'Юрский',
+// 		},
+// 	correctAnswerKey: 'd',
+// 	},
+// 	{
+// 		text: 'В каком году Россия объявила дефолт?',
+// 		variants: {
+// 			a: '1991',
+// 			b: '1986',
+// 			c: '1998',
+// 			d: '2008',
+// 		},
+// 	correctAnswerKey: 'c',
+// 	},
+// 	{
+// 		text: 'Какие два евангелиста повествуют об обстоятельствах рождения Иисуса Христа?',
+// 		variants: {
+// 			a: 'Марк и Иоанн',
+// 			b: 'Иоанн и Линда',
+// 			c: 'Марк и Лука',
+// 			d: 'Матфей и Лука',
+// 		},
+// 	correctAnswerKey: 'd',
+// 	},
+// 	{
+// 		text: 'Что говорит человек, когда замечает нечто необычное?',
+// 		variants: {
+// 			a: 'Попало в лоб',
+// 			b: 'Бросилось в глаза',
+// 			c: 'Накапало в уши',
+// 			d: 'Залетело в рот',
+// 		},
+// 	correctAnswerKey: 'b',
+// 	},
+// 	{
+// 		text: 'Кто стал героиней песни Максима Леонидова?',
+// 		variants: {
+// 			a: 'Девочка — мираж',
+// 			b: 'Девочка — видение',
+// 			c: 'Девочка — приведенье',
+// 			d: 'Девочка — галлюцинация',
+// 		},
+// 	correctAnswerKey: 'b',
+// 	},
+// ];
+// const quiz = {
+// 	questions,
+// 	scoreCount: 0,
+
+
+// 	run() {
+// 		const userAnswer = this.getAnswer();
+
+// 		if (userAnswer === '+') {
+// 			alert('Добро пожаловать уважаемый участник викторины.');
+// 			alert('It Has Begun');
+// 		} else if (userAnswer === '-') {
+// 			alert('До свидания.')
+// 			return;
+// 		};
+
+// 		this.getCurrentQuestion();
+
+// 		alert(`Вы правильно ответили на ${this.scoreCount} из 7 вопросов`);
+
+// 		const playAgain = prompt('Хотите сыграть снова? Введите \"+\" - если да, \"-\" - если нет.')
+
+// 		if (playAgain === '+') {
+// 			this.scoreCount = 0;
+// 			this.run();
+// 		}
+// 	},
+
+// 	getAnswer() {
+// 		const answer = prompt('Здравствуйте. Хотите сыграть в викторину?. Введите \"+\" - если да, \"-\" - если нет.');
+// 		return answer;
+// 	},
+
+// 	getValidAnswer() {
+// 		let availableAnswers = ['a', 'b', 'c', 'd', '-'];
+// 		while (true) {
+// 			let answer = prompt('Введите вариант ответа.');
+// 			if (!availableAnswers.includes(answer)) {
+// 				alert('Необходимо ввести один из вариантов ответа.');
+// 				continue;
+// 			}
+// 			return answer;
+// 		}
+// 	},	
+
+// 	getCurrentQuestion() {
+// 		this.questions.forEach((obj) => {
+// 			console.clear();
+// 			console.log(obj.text);
+// 			for (let key in obj.variants) {
+// 				console.log(`${key} - ${obj.variants[key]}`);
+// 			}
+// 			let answer = this.getValidAnswer();
+// 			if (answer === obj.correctAnswerKey) {
+// 				this.scoreCount++;
+// 			}
+// 		})
+// 	},
+
+// 	userWantExit(userAnswer) {
+// 		if (userAnswer === '-') {
+// 			alert('Очень жаль, до свидания.');
+// 			return;
+// 		}
+// 	},
+// }
+// quiz.run();
+
+//ДЗ 5
+
+const chess = {
+	gameContainerElem: document.getElementById('game'),
+	rowsCount: 10,
+	colsCount: 10,
+	figures: [
+		{name: 'p', color: 'w', position: 'A2'},
+		{name: 'p', color: 'w', position: 'B2'},
+		{name: 'p', color: 'w', position: 'C2'},
+		{name: 'p', color: 'w', position: 'D2'},
+		{name: 'p', color: 'w', position: 'E2'},
+		{name: 'p', color: 'w', position: 'F2'},
+		{name: 'p', color: 'w', position: 'G2'},
+		{name: 'p', color: 'w', position: 'H2'},
+		{name: 'b', color: 'w', position: 'C1'},
+		{name: 'b', color: 'w', position: 'F1'},
+		{name: 'N', color: 'w', position: 'B1'},
+		{name: 'N', color: 'w', position: 'G1'},
+		{name: 'R', color: 'w', position: 'A1'},
+		{name: 'R', color: 'w', position: 'H1'},
+		{name: 'Q', color: 'w', position: 'E1'},
+		{name: 'K', color: 'w', position: 'D1'},
+		{name: 'p', color: 'b', position: 'A7'},
+		{name: 'p', color: 'b', position: 'B7'},
+		{name: 'p', color: 'b', position: 'C7'},
+		{name: 'p', color: 'b', position: 'D7'},
+		{name: 'p', color: 'b', position: 'E7'},
+		{name: 'p', color: 'b', position: 'F7'},
+		{name: 'p', color: 'b', position: 'H7'},
+		{name: 'p', color: 'b', position: 'G7'},
+		{name: 'b', color: 'b', position: 'C8'},
+		{name: 'b', color: 'b', position: 'F8'},
+		{name: 'N', color: 'b', position: 'B8'},
+		{name: 'N', color: 'b', position: 'G8'},
+		{name: 'R', color: 'b', position: 'A8'},
+		{name: 'R', color: 'b', position: 'H8'},
+		{name: 'Q', color: 'b', position: 'E8'},
+		{name: 'K', color: 'b', position: 'D8'},
+	],
+	figureHTML: {
+		pw: '♙',
+		bw: '♖',
+		Nw: '♘',
+		Rw: '♗',
+		Qw: '♕',
+		Kw: '♔',
+		pb: '♟',
+		bb: '♜',
+		Nb: '♞',
+		Rb: '♝',
+		Qb: '♛',
+		Kb: '♚',
+	},
+
+	renderBoard() {
+		const num = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+		const letters = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ''];
+		for (let row = 0; row < this.rowsCount; row++) {
+			const trElem = document.createElement('tr');
+			this.gameContainerElem.appendChild(trElem);
+			for (let col = 0; col < this.colsCount; col++) {
+				const cell = document.createElement('td');
+				trElem.appendChild(cell);
+				cell.setAttribute('data-pos', `${letters[col]}${num[row]}`)
+				if (trElem.rowIndex === 0 || trElem.rowIndex === 9) {
+					cell.innerHTML = letters[col];
+				} else if (cell.cellIndex === 0 || cell.cellIndex === 9) {
+					cell.innerHTML = num[row];
+				} else if (this.isCellsBlack(trElem.rowIndex, cell.cellIndex)) {
+					cell.style.backgroundColor = '#623a07';
+				}
+				this.renderFigure(cell);
+			}
+		}
+		return this.gameContainerElem
+	},
+
+	isCellsBlack(rowNum, colNum) {
+		if (rowNum % 2 === 0) {
+			return colNum % 2 === 1;
+		} else return colNum % 2 === 0;
+	},
+
+	renderFigure(cell) {
+		this.figures.forEach((obj) => {
+			if (cell.getAttribute('data-pos') === obj.position) {
+				for (let key in this.figureHTML) {
+					if (key === `${obj.name}${obj.color}`) {
+						cell.innerHTML = this.figureHTML[key];
+					}
+				}
+			}
+		})
+	}
 };
+window.addEventListener('load', () => chess.renderBoard());
