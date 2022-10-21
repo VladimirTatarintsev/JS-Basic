@@ -581,7 +581,6 @@ const chess = {
 				} else if (this.isCellsBlack(trElem.rowIndex, cell.cellIndex)) {
 					cell.style.backgroundColor = '#623a07';
 				}
-				this.renderFigure(cell);
 			}
 		}
 		return this.gameContainerElem
@@ -593,16 +592,11 @@ const chess = {
 		} else return colNum % 2 === 0;
 	},
 
-	renderFigure(cell) {
-		this.figures.forEach((obj) => {
-			if (cell.getAttribute('data-pos') === obj.position) {
-				for (let key in this.figureHTML) {
-					if (key === `${obj.name}` + `${obj.color}`) {
-						cell.innerHTML = this.figureHTML[key];
-					}
-				}
-			}
+	renderFigure() {
+		this.figures.forEach((figure) => {
+			document.querySelector(`[data-pos = ${figure.position}]`).innerHTML = this.figureHTML[figure.name + figure.color];
 		})
 	}
 };
-window.addEventListener('load', () => chess.renderBoard());
+chess.renderBoard();
+chess.renderFigure();
