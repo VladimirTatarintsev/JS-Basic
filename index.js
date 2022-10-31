@@ -511,92 +511,214 @@
 
 //ДЗ 5
 
-const chess = {
-	gameContainerElem: document.getElementById('game'),
-	rowsCount: 10,
-	colsCount: 10,
-	figures: [
-		{name: 'p', color: 'w', position: 'A2'},
-		{name: 'p', color: 'w', position: 'B2'},
-		{name: 'p', color: 'w', position: 'C2'},
-		{name: 'p', color: 'w', position: 'D2'},
-		{name: 'p', color: 'w', position: 'E2'},
-		{name: 'p', color: 'w', position: 'F2'},
-		{name: 'p', color: 'w', position: 'G2'},
-		{name: 'p', color: 'w', position: 'H2'},
-		{name: 'b', color: 'w', position: 'C1'},
-		{name: 'b', color: 'w', position: 'F1'},
-		{name: 'N', color: 'w', position: 'B1'},
-		{name: 'N', color: 'w', position: 'G1'},
-		{name: 'R', color: 'w', position: 'A1'},
-		{name: 'R', color: 'w', position: 'H1'},
-		{name: 'Q', color: 'w', position: 'E1'},
-		{name: 'K', color: 'w', position: 'D1'},
-		{name: 'p', color: 'b', position: 'A7'},
-		{name: 'p', color: 'b', position: 'B7'},
-		{name: 'p', color: 'b', position: 'C7'},
-		{name: 'p', color: 'b', position: 'D7'},
-		{name: 'p', color: 'b', position: 'E7'},
-		{name: 'p', color: 'b', position: 'F7'},
-		{name: 'p', color: 'b', position: 'H7'},
-		{name: 'p', color: 'b', position: 'G7'},
-		{name: 'b', color: 'b', position: 'C8'},
-		{name: 'b', color: 'b', position: 'F8'},
-		{name: 'N', color: 'b', position: 'B8'},
-		{name: 'N', color: 'b', position: 'G8'},
-		{name: 'R', color: 'b', position: 'A8'},
-		{name: 'R', color: 'b', position: 'H8'},
-		{name: 'Q', color: 'b', position: 'E8'},
-		{name: 'K', color: 'b', position: 'D8'},
-	],
-	figureHTML: {
-		pw: '♙',
-		bw: '♖',
-		Nw: '♘',
-		Rw: '♗',
-		Qw: '♕',
-		Kw: '♔',
-		pb: '♟',
-		bb: '♜',
-		Nb: '♞',
-		Rb: '♝',
-		Qb: '♛',
-		Kb: '♚',
-	},
+// const chess = {
+// 	gameContainerElem: document.getElementById('game'),
+// 	rowsCount: 10,
+// 	colsCount: 10,
+// 	figures: [
+// 		{name: 'p', color: 'w', position: 'A2'},
+// 		{name: 'p', color: 'w', position: 'B2'},
+// 		{name: 'p', color: 'w', position: 'C2'},
+// 		{name: 'p', color: 'w', position: 'D2'},
+// 		{name: 'p', color: 'w', position: 'E2'},
+// 		{name: 'p', color: 'w', position: 'F2'},
+// 		{name: 'p', color: 'w', position: 'G2'},
+// 		{name: 'p', color: 'w', position: 'H2'},
+// 		{name: 'b', color: 'w', position: 'C1'},
+// 		{name: 'b', color: 'w', position: 'F1'},
+// 		{name: 'N', color: 'w', position: 'B1'},
+// 		{name: 'N', color: 'w', position: 'G1'},
+// 		{name: 'R', color: 'w', position: 'A1'},
+// 		{name: 'R', color: 'w', position: 'H1'},
+// 		{name: 'Q', color: 'w', position: 'E1'},
+// 		{name: 'K', color: 'w', position: 'D1'},
+// 		{name: 'p', color: 'b', position: 'A7'},
+// 		{name: 'p', color: 'b', position: 'B7'},
+// 		{name: 'p', color: 'b', position: 'C7'},
+// 		{name: 'p', color: 'b', position: 'D7'},
+// 		{name: 'p', color: 'b', position: 'E7'},
+// 		{name: 'p', color: 'b', position: 'F7'},
+// 		{name: 'p', color: 'b', position: 'H7'},
+// 		{name: 'p', color: 'b', position: 'G7'},
+// 		{name: 'b', color: 'b', position: 'C8'},
+// 		{name: 'b', color: 'b', position: 'F8'},
+// 		{name: 'N', color: 'b', position: 'B8'},
+// 		{name: 'N', color: 'b', position: 'G8'},
+// 		{name: 'R', color: 'b', position: 'A8'},
+// 		{name: 'R', color: 'b', position: 'H8'},
+// 		{name: 'Q', color: 'b', position: 'E8'},
+// 		{name: 'K', color: 'b', position: 'D8'},
+// 	],
+// 	figureHTML: {
+// 		pw: '♙',
+// 		bw: '♖',
+// 		Nw: '♘',
+// 		Rw: '♗',
+// 		Qw: '♕',
+// 		Kw: '♔',
+// 		pb: '♟',
+// 		bb: '♜',
+// 		Nb: '♞',
+// 		Rb: '♝',
+// 		Qb: '♛',
+// 		Kb: '♚',
+// 	},
 
-	renderBoard() {
-		const num = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-		const letters = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ''];
-		for (let row = 0; row < this.rowsCount; row++) {
-			const trElem = document.createElement('tr');
-			this.gameContainerElem.appendChild(trElem);
-			for (let col = 0; col < this.colsCount; col++) {
-				const cell = document.createElement('td');
-				trElem.appendChild(cell);
-				cell.setAttribute('data-pos', `${letters[col]}${num[row]}`)
-				if (trElem.rowIndex === 0 || trElem.rowIndex === 9) {
-					cell.innerHTML = letters[col];
-				} else if (cell.cellIndex === 0 || cell.cellIndex === 9) {
-					cell.innerHTML = num[row];
-				} else if (this.isCellsBlack(trElem.rowIndex, cell.cellIndex)) {
-					cell.style.backgroundColor = '#623a07';
-				}
-			}
-		}
-		return this.gameContainerElem
-	},
+// 	renderBoard() {
+// 		const num = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+// 		const letters = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ''];
+// 		for (let row = 0; row < this.rowsCount; row++) {
+// 			const trElem = document.createElement('tr');
+// 			this.gameContainerElem.appendChild(trElem);
+// 			for (let col = 0; col < this.colsCount; col++) {
+// 				const cell = document.createElement('td');
+// 				trElem.appendChild(cell);
+// 				cell.setAttribute('data-pos', `${letters[col]}${num[row]}`)
+// 				if (trElem.rowIndex === 0 || trElem.rowIndex === 9) {
+// 					cell.innerHTML = letters[col];
+// 				} else if (cell.cellIndex === 0 || cell.cellIndex === 9) {
+// 					cell.innerHTML = num[row];
+// 				} else if (this.isCellsBlack(trElem.rowIndex, cell.cellIndex)) {
+// 					cell.style.backgroundColor = '#623a07';
+// 				}
+// 			}
+// 		}
+// 		return this.gameContainerElem
+// 	},
 
-	isCellsBlack(rowNum, colNum) {
-		if (rowNum % 2 === 0) {
-			return colNum % 2 === 1;
-		} else return colNum % 2 === 0;
-	},
+// 	isCellsBlack(rowNum, colNum) {
+// 		if (rowNum % 2 === 0) {
+// 			return colNum % 2 === 1;
+// 		} else return colNum % 2 === 0;
+// 	},
 
-	renderFigure() {
-		this.figures.forEach((figure) => {
-			document.querySelector(`[data-pos = ${figure.position}]`).innerHTML = this.figureHTML[figure.name + figure.color];
-		})
+// 	renderFigure() {
+// 		this.figures.forEach((figure) => {
+// 			document.querySelector(`[data-pos = ${figure.position}]`).innerHTML = this.figureHTML[figure.name + figure.color];
+// 		})
+// 	}
+// };
+// chess.renderBoard();
+// chess.renderFigure();
+
+//ДЗ 6
+
+/**
+ * @property {Object} settings Объект с настройками галереи.
+ * @property {string} settings.previewSelector Селектор обертки для миниатюр галереи.
+ * @property {string} settings.openedImageWrapperClass Класс для обертки открытой картинки.
+ * @property {string} settings.openedImageClass Класс открытой картинки.
+ * @property {string} settings.openedImageScreenClass Класс для ширмы открытой картинки.
+ * @property {string} settings.openedImageCloseBtnClass Класс для картинки кнопки закрыть.
+ * @property {string} settings.openedImageCloseBtnSrc Путь до картинки кнопки открыть.
+ */
+ const gallery = {
+	settings: {
+	  previewSelector: '.mySuperGallery',
+	  openedImageWrapperClass: 'galleryWrapper',
+	  openedImageClass: 'galleryWrapper__image',
+	  openedImageScreenClass: 'galleryWrapper__screen',
+	  openedImageCloseBtnClass: 'galleryWrapper__close',
+	  openedImageCloseBtnSrc: 'images/gallery/close.png',
+	  openedImageError: 'images/error/Error.png',
+	},
+ 
+	/**
+	 * Инициализирует галерею, ставит обработчик события.
+	 * @param {Object} userSettings Объект настроек для галереи.
+	 */
+	init(userSettings = {}) {
+	  // Записываем настройки, которые передал пользователь в наши настройки.
+	  Object.assign(this.settings, userSettings);
+ 
+	  // Находим элемент, где будут превью картинок и ставим обработчик на этот элемент,
+	  // при клике на этот элемент вызовем функцию containerClickHandler в нашем объекте
+	  // gallery и передадим туда событие MouseEvent, которое случилось.
+	  document
+		 .querySelector(this.settings.previewSelector)
+		 .addEventListener('click', event => this.containerClickHandler(event));
+	},
+ 
+	/**
+	 * Обработчик события клика для открытия картинки.
+	 * @param {MouseEvent} event Событие клики мышью.
+	 * @param {HTMLElement} event.target Целевой объект, куда был произведен клик.
+	 */
+	containerClickHandler(event) {
+	  // Если целевой тег не был картинкой, то ничего не делаем, просто завершаем функцию.
+	  if (event.target.tagName !== 'IMG') {
+		 return;
+	  }
+	  // Открываем картинку с полученным из целевого тега (data-full_image_url аттрибут).
+	  this.openImage(event.target.dataset.full_image_url);
+	},
+ 
+	/**
+	 * Открывает картинку.
+	 * @param {string} src Ссылка на картинку, которую надо открыть.
+	 */
+	openImage(src) {
+	  // Получаем контейнер для открытой картинки, в нем находим тег img и ставим ему нужный src.
+	  this.getScreenContainer().querySelector(`.${this.settings.openedImageClass}`).src = src;
+	},
+ 
+	/**
+	 * Возвращает контейнер для открытой картинки, либо создает такой контейнер, если его еще нет.
+	 * @returns {Element}
+	 */
+	getScreenContainer() {
+	  // Получаем контейнер для открытой картинки.
+	  const galleryWrapperElement = document.querySelector(`.${this.settings.openedImageWrapperClass}`);
+	  // Если контейнер для открытой картинки существует - возвращаем его.
+	  if (galleryWrapperElement) {
+		 return galleryWrapperElement;
+	  }
+ 
+	  // Возвращаем полученный из метода createScreenContainer контейнер.
+	  return this.createScreenContainer();
+	},
+ 
+	/**
+	 * Создает контейнер для открытой картинки.
+	 * @returns {HTMLElement}
+	 */
+	createScreenContainer() {
+	  // Создаем сам контейнер-обертку и ставим ему класс.
+	  const galleryWrapperElement = document.createElement('div');
+	  galleryWrapperElement.classList.add(this.settings.openedImageWrapperClass);
+ 
+	  // Создаем контейнер занавеса, ставим ему класс и добавляем в контейнер-обертку.
+	  const galleryScreenElement = document.createElement('div');
+	  galleryScreenElement.classList.add(this.settings.openedImageScreenClass);
+	  galleryWrapperElement.appendChild(galleryScreenElement);
+ 
+	  // Создаем картинку для кнопки закрыть, ставим класс, src и добавляем ее в контейнер-обертку.
+	  const closeImageElement = new Image();
+	  closeImageElement.classList.add(this.settings.openedImageCloseBtnClass);
+	  closeImageElement.src = this.settings.openedImageCloseBtnSrc;
+	  closeImageElement.addEventListener('click', () => this.close());
+	  galleryWrapperElement.appendChild(closeImageElement);
+ 
+	  // Создаем картинку, которую хотим открыть, ставим класс и добавляем ее в контейнер-обертку.
+	  const image = new Image();
+	  image.classList.add(this.settings.openedImageClass);
+	  image.onerror = () => image.src = this.settings.openedImageError;
+	  galleryWrapperElement.appendChild(image);
+ 
+	  // Добавляем контейнер-обертку в тег body.
+	  document.body.appendChild(galleryWrapperElement);
+ 
+	  // Возвращаем добавленный в body элемент, наш контейнер-обертку.
+	  return galleryWrapperElement;
+	},
+ 
+	/**
+	 * Закрывает (удаляет) контейнер для открытой картинки.
+	 */
+	close() {
+	  document.querySelector(`.${this.settings.openedImageWrapperClass}`).remove();
 	}
-};
-chess.renderBoard();
-chess.renderFigure();
+ };
+ 
+ // Инициализируем нашу галерею при загрузке страницы.
+ window.onload = () => gallery.init({previewSelector: '.galleryPreviewsContainer'});
