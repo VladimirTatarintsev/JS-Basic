@@ -613,6 +613,8 @@
  * @property {string} settings.openedImageCloseBtnSrc Путь до картинки кнопки открыть.
  */
  const gallery = {
+	openImageEl: {},
+
 	settings: {
 	  previewSelector: '.mySuperGallery',
 	  openedImageWrapperClass: 'galleryWrapper',
@@ -621,8 +623,9 @@
 	  openedImageCloseBtnClass: 'galleryWrapper__close',
 	  openedImageCloseBtnSrc: 'images/gallery/close.png',
 	  openedImageError: 'images/error/Error.png',
+	  openedImageNext: {src: 'images/gallery/next.png', class: 'galleryWrapper__next'},
+	  openedImageBack: {src: 'images/gallery/back.png', class: 'galleryWrapper__back'},
 	},
- 
 	/**
 	 * Инициализирует галерею, ставит обработчик события.
 	 * @param {Object} userSettings Объект настроек для галереи.
@@ -635,10 +638,9 @@
 	  // при клике на этот элемент вызовем функцию containerClickHandler в нашем объекте
 	  // gallery и передадим туда событие MouseEvent, которое случилось.
 	  document
-		 .querySelector(this.settings.previewSelector)
-		 .addEventListener('click', event => this.containerClickHandler(event));
+		.querySelector(this.settings.previewSelector)
+		.addEventListener('click', event => this.containerClickHandler(event));
 	},
- 
 	/**
 	 * Обработчик события клика для открытия картинки.
 	 * @param {MouseEvent} event Событие клики мышью.
@@ -651,6 +653,7 @@
 	  }
 	  // Открываем картинку с полученным из целевого тега (data-full_image_url аттрибут).
 	  this.openImage(event.target.dataset.full_image_url);
+	  this.openImageEl = event.target;
 	},
  
 	/**
@@ -704,6 +707,22 @@
 	  image.classList.add(this.settings.openedImageClass);
 	  image.onerror = () => image.src = this.settings.openedImageError;
 	  galleryWrapperElement.appendChild(image);
+
+	  const nextImage = new Image();
+	  nextImage.classList.add(this.settings.openedImageNext.class);
+	  nextImage.src = this.settings.openedImageNext.src;
+	  nextImage.addEventListener('click', () => {
+		this.openImageEl = this.getNextImage();
+		this.openImage(this.openImageEl.dataset.full_image_url)});
+	  galleryWrapperElement.appendChild(nextImage);
+
+	  const prevImage = new Image();
+	  prevImage.classList.add(this.settings.openedImageBack.class);
+	  prevImage.src = this.settings.openedImageBack.src;
+	  prevImage.addEventListener('click', () => {
+		this.openImageEl = this.getBackImage();
+		this.openImage(this.openImageEl.dataset.full_image_url)});
+	  galleryWrapperElement.appendChild(prevImage)
  
 	  // Добавляем контейнер-обертку в тег body.
 	  document.body.appendChild(galleryWrapperElement);
@@ -717,7 +736,17 @@
 	 */
 	close() {
 	  document.querySelector(`.${this.settings.openedImageWrapperClass}`).remove();
-	}
+	},
+
+	getNextImage() {
+		const nextImg = this.openImageEl.nextElementSibling;
+		return nextImg ? nextImg : this.openImageEl.parentNode.firstElementChild;
+	},
+
+	getBackImage() {
+		const prevImg = this.openImageEl.previousElementSibling;
+		return prevImg ? prevImg : this.openImageEl.parentNode.lastElementChild;
+	},
  };
  
  // Инициализируем нашу галерею при загрузке страницы.
